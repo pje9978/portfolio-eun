@@ -1,0 +1,50 @@
+@keyframes tracking-in-expand-forward-top{0%{letter-spacing:-.2em;transform:translateZ(-700px) translateY(-100px);opacity:0}40%{opacity:.6}100%{transform:translateZ(0) translateY(0);opacity:1}}
+@-webkit-keyframes flip-in-hor-bottom {
+    0% {
+      -webkit-transform: rotateX(80deg);
+              transform: rotateX(80deg);
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: rotateX(0);
+              transform: rotateX(0);
+      opacity: 1;
+    }
+  }
+  @keyframes flip-in-hor-bottom {
+    0% {
+      -webkit-transform: rotateX(80deg);
+              transform: rotateX(80deg);
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: rotateX(0);
+              transform: rotateX(0);
+      opacity: 1;
+    }
+  }
+#gallery .slick-arrow.slick-prev{ left: 0; z-index: 1; transform: translate(100%, -500%); -webkit-transform: translate(100%, -500%); -moz-transform: translate(100%, -500%); -ms-transform: translate(100%, -500%); -o-transform: translate(100%, -500%); }
+#gallery .slick-arrow.slick-next{ right: 0; z-index: 1; transform: translate(-50%, -500%); -webkit-transform: translate(-50%, -500%); -moz-transform: translate(-50%, -500%); -ms-transform: translate(-50%, -500%); -o-transform: translate(-50%, -500%); }
+
+.slick-track{display: flex;}
+// 센터이미지
+.slick-current{
+    opacity: 100%;
+    z-index: 10;
+    position: absolute;
+    -webkit-animation: flip-in-hor-bottom 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation: flip-in-hor-bottom 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    .slide__title{
+        animation:tracking-in-expand-forward-top 0.4s linear both;
+        -webkit-animation:tracking-in-expand-forward-top 0.4s linear both;
+}
+
+}
+
+.slick-slide.slick-active{
+    opacity: 50%; position: relative;
+
+}
+
+.slick-slide{opacity: 10%;}
+

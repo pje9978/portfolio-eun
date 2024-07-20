@@ -1,0 +1,112 @@
+@import "../styles/_utils";
+
+@keyframes loaderAnim {
+	to {
+		opacity: 1;
+		transform: scale3d(0.5,0.5,1);
+	}
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+  .icon-group {
+    animation-play-state: paused;
+  }
+}
+
+.gnb,
+.lnb {
+  transition: opacity 0.5s ease; /* 트랜지션 속성 설정 */
+}
+.loading-screen {
+  /* 로딩 화면 스타일 및 위치 설정 */
+  position: fixed;
+  top: 0;
+  left: 0;
+ 
+  
+  /* 로딩 화면 배경색과 가운데 정렬 등의 스타일 설정 */
+}
+
+.loading-screen.fade-out {
+   opacity: 0; /* 로딩 화면이 서서히 사라지도록 효과 적용 */
+   pointer-events: none; /* 숨겨진 상태에서 이벤트 무시 */
+}
+  
+.page {
+  // position: fixed;
+  // left: 0;
+  // top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  // background: #2A2F36;
+}
+
+
+.loading-blurbs {
+  max-width: 400px;
+  width: 320px;
+  height: 180px;
+  text-align: left;
+  position: relative;
+}
+.loading-blurbs code {
+  --animation-duration: 200ms;
+  display: block;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  animation-name: move;
+  animation-duration: calc(var(--animation-duration) * 8);
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  opacity: 0;
+  color: var(--primary);
+}
+
+@keyframes move {
+  from {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  
+  50% {
+    opacity: 1;
+  }
+  
+  100% {
+    opacity: 0;
+    transform: translateY(-170px);
+  }
+}
+
+.loading-blurbs code.typescript {
+  animation-delay: var(--animation-duration) ;
+}
+
+.loading-blurbs code.ruby {
+  animation-delay: calc(var(--animation-duration) * 2);
+}
+
+.loading-blurbs code.csharp {
+  animation-delay: calc(var(--animation-duration) * 3);
+}
+
+.loading-blurbs code.cplusplus {
+  animation-delay: calc(var(--animation-duration) * 4);
+}
+
+.loading-blurbs code.java {
+  animation-delay: calc(var(--animation-duration) * 5);
+}
+
+.loading-blurbs code.swift {
+  animation-delay: calc(var(--animation-duration) * 6);
+}
+
+.loading-blurbs code.php {
+  animation-delay: calc(var(--animation-duration) * 7);
+}

@@ -1,0 +1,29 @@
+
+:root {
+    --bg-black : hsl(0, 0%, 5%);
+    --text-black : hsl(0, 0%, 5%);
+    --text-white : hsl(42, 18%, 89%);
+    --bg-white : hsl(42, 18%, 89%);
+    --primary: #ffefe5;
+    --secondary: #0A3FFF;
+    --page-padding: 1.5rem 2rem;
+    --bg:#1a1a1a;
+    --min-size:200px;
+}
+
+
+html,body {
+    width: 100%;
+    height: 100%;
+    background-color: black;
+}
+
+*, *::before, *::after { box-sizing:border-box }
+
+body {
+	margin:0;
+    background: black;
+    color:var(--text-white);
+    font-family: "Pretendard-Regular";
+}
+
