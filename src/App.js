@@ -9,8 +9,8 @@ import {db} from './firebase.jsx';
 import NotFound from './routes/notFound.jsx';
 import "slick-carousel/slick/slick.css";
 import  "slick-carousel/slick/slick-theme.css";
-import SubPage from './routes/subpage.jsx';
-import SubPage_Re from "./routes/subpage_re.jsx";
+import SubPage from './routes/Subpage.jsx';
+import SubPageRe from "./routes/SubpageRe.jsx";
 
 function App() {
   const [data2017, setData2017] = useState([]);
@@ -70,7 +70,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/2017/:id/:index" element={<SubPage data={data2017} />} />
-        <Route path="/2024/:id/:index" element={<SubPage_Re data={data2024} />} />
+        <Route path="/2024/:id/:index" element={<SubPageRe data={data2024} />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
