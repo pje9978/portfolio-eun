@@ -1,5 +1,5 @@
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import BackgroundBall from "../components/bgBall";
 import Gnb from "../components/gnb";
 import Footer from "../layout/footer";
@@ -7,6 +7,11 @@ import Gallery from "../layout/gallery";
 import { collection, getDocs, orderBy, query } from "firebase/firestore";
 import { db } from "../firebase";
 import Loading from "../components/loading";
+import Skill from "../layout/skill";
+import Dtl2024 from "../layout/dtl_2024";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
 
 function Home() {
     const [data, setData] = useState([]);
@@ -37,19 +42,24 @@ function Home() {
        
     }, []);
     
-
+   
     return ( 
         <>
             {loading ? (
                 <Loading />
             ) : (
             <>
+            <div>
                 <BackgroundBall />
                 <Gnb/>
+   
                 <main className="w-full flex flex-col z-10 relative">
+                    <Dtl2024 />
                     <Gallery/>
-                </main>
+                    <Skill />
+                </main> 
                 <Footer />
+                </div>
             </>
             )}
             

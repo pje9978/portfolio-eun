@@ -44,7 +44,7 @@ function Footer() {
         </footer>
         <div  data-aos="fade-up" data-aos-duration="1000" role="group" aria-label="footer" className="w-full mt-12 py-3 border-t">
                 <article className="container mx-auto flex justify-between p-3 pt-3">
-                    <h5 className=" text-2xl">© 2023
+                    <h5 className=" text-2xl">© 2025
                     </h5>
                     <section className="time text-2xl flex justify-center items-center sm:flex relative gap-3">
                         <section className="relative flex h-3 w-3">
@@ -53,12 +53,12 @@ function Footer() {
                             <span className="relative inline-flex rounded-full h-3 w-3 bg-bgwhite"></span>
                         </section>
 
-                        <div class="relative flex justify-items-end w-full">
-                            <span class="flex absolute h-3 w-3 top-0 left-0 -translate-x-full translate-y-full -ml-2">
-                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
-                                <span class="relative inline-flex rounded-full h-3 w-3 bg-white"></span>
+                        <div className="relative flex justify-items-end w-full">
+                            <span className="flex absolute h-3 w-3 top-0 left-0 -translate-x-full translate-y-full -ml-2">
+                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+                                <span className="relative inline-flex rounded-full h-3 w-3 bg-white"></span>
                             </span>
-                            <span class="relative inline-flex">SEOUL</span>
+                            <span className="relative inline-flex">SEOUL</span>
                         </div>
                 
                         <span id="currentTime" className="hidden sm:flex"></span>

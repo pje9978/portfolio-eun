@@ -1,16 +1,17 @@
 import { useLocation, useParams } from "react-router-dom";
 import Gnb from "../components/gnb";
 import '../styles/_macbook.scss';
-import MacBook from "../components/subpage/macbook";
 import Loading from "../components/loading";
 import BackgroundBall from "../components/bgBall";
 
 import { useEffect } from "react";
+import MacBookRe from "../components/subpage/macbook-re";
 
-function SubPage(props) {
+function SubPage_Re(props) {
     let { id, index } = useParams();
     console.log(id);
     console.log(index);
+    console.log(props);
     const location = useLocation();
 
     useEffect(() => {
@@ -40,14 +41,19 @@ function SubPage(props) {
                     {/* <Device device={props.data[index].device}/> */}
                     <h2 className="title text-5xl font-semibold mt-6 capitalize">{props.data[id].title}</h2>
                     <h3 className="flex flex-row gap-2 text-center flex-wrap justify-center items-center mt-4">
-                        <span className="bg-black text-white/50 py-1 px-2">렌더링 및 사진 보정</span>
+                        <span className="bg-black text-white/50 py-1 px-2">사진 보정</span>
                         <span className="bg-black text-white/50 py-1 px-2">디자인 기획</span>
                         <span className="bg-black text-white/50 py-1 px-2">레이아웃 디자인</span>
                         <span className="bg-black text-white/50 py-1 px-2">상세페이지 디자인</span>
                     </h3>
                 </section>
-            
-                <MacBook id={id} props={props} title={props.data[id].title} />
+                {props.data[id].images?.map((image, index) => (
+                                        <div key={index}>
+                                           <MacBookRe id={id} props={props} image={image} />
+                                        </div>
+                )) || null}
+                        
+              
                 {/* <Language language={props.data[id].language}/> */}
                 <article className="text-gray-600 mt-24">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
@@ -69,9 +75,13 @@ function SubPage(props) {
                             <span className="md:text-[10vw] font-larger text-[15vw]  opacity-80 -mt-2">pages.</span>
                         </h2>
                     </header>            
-                    <article className="flex justify-start gap-3 mx-auto flex-col max-w-[860px] items-start py-12  p-4">
-
-                        <img src={`${process.env.PUBLIC_URL}/images/capture/gallery/dtl/${props.data[id].name}.jpg`} alt="" />
+                    <article className="flex justify-start mx-auto flex-col max-w-[860px] items-start py-12  p-4 ">
+                         {props.data[id].url?.map((urls, index) => (
+                                        <div key={index}>
+                                           <img src={urls} alt="" />
+                                        </div>
+                                    )) || null}
+                        
                         {/* <Page url={props.data[id].url} result={props.data[id].result} title={props.data[id].title}/> */}
                             
                     </article>
@@ -93,4 +103,4 @@ function SubPage(props) {
     </> );
 }
 
-export default SubPage;
+export default SubPage_Re;

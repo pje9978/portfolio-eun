@@ -31,3 +31,17 @@
     font-family: "Pretendard-Regular";
     position: relative;
   }
+
+  .image-container {
+    opacity: 0;
+    animation: fadeIn 0.5s forwards;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }

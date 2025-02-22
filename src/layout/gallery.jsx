@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 function Gallery() {
 
     const [data, setData] = useState([]);
+    console.log(data)
     var settings = {
         focusOnSelect: true,
         className: "center",
@@ -22,8 +23,8 @@ function Gallery() {
             settings: {
               slidesToShow: 3,
               slidesToScroll: 3,
-              infinite: true,
-              dots: true
+              // infinite: true,
+              // dots: true
             }
           },
           {
@@ -74,10 +75,11 @@ function Gallery() {
     }, []);
     
     return ( <>
-            <section id="gallery" className="mainpage " data-aos="fade-up" data-aos-duration="1000" >
+            <section id="gallery" className="mainpage mt-40" data-aos="fade-up" data-aos-duration="1000" >
                 <header className="text-center">
-                    <h2 className="content__title md:text-[10vw] font-larger text-[15vw]  opacity-80" data-splitting
-                        data-effect10>Gallery.</h2>
+                    {/* <h2 className="content__title md:text-[10vw] font-larger text-[15vw]  opacity-80" data-splitting
+                        data-effect10>Gallery.</h2> */}
+                    <h2 className="text-xl opacity-50">[2017-2022]</h2>
                     <h3 className="text-center text-3xl  font-semibold mt-2 "> <span className="block  w-full whitespace-pre-wrap  opacity-100">Previous Company Portfolio:</span>
                         <span className="opacity-50">A showcase of various graphic design</span>
                     </h3>
@@ -85,6 +87,7 @@ function Gallery() {
                 <div className="slider-container container mx-auto overflow-hidden">
                     <Slider {...settings} className="cursor-pointer flex justify-center items-center">
                         {data.map((item,index) => (
+                           
                             <section key={item.id} className="slide container mx-auto py-24 flex p-2">
                                 <figure className="slide__img-wrap cursor-pointer">
                                     {/* <div  alt={item.name} className="slide__img w-full bg-cover bg-center bg-no-repeat " style={{backgroundImage: `url(${process.env.PUBLIC_URL}/images/capture/gallery/thumb/${item.name}.jpg)`}}/> */}
@@ -92,15 +95,10 @@ function Gallery() {
                                 </figure>
                                 {/* <h2 className="slide__side">{item.title}</h2> */}
                                 <article className="slide__title-wrap flex flex-col justify-start items-start p-4">
-                                    <h5 className="slide__number relative mb-6 after:content-[''] after:absolute after:-bottom-2 after:w-4 after:h-[2px] pb-1  after:left-0 after:bg-white after:mt-6 ">{index + 1} </h5>
-                                    <h3 className="slide__title font-semibold text-3xl mb-4 text-left">{item.title}</h3>
-                                    <h4 className="slide__subtitle text-sm opacity-80 -mt-3 text-left">{item.subtitle}</h4>
-                                    <Link to={`pages/${index}`}  className="relative inline-flex justify-center items-center z-100 mt-6 px-2 py-1 border border-white/20 text-white/70 hover:border-white/100 hover:text-white/100">상세페이지</Link>
-                                   
-                                    {/* <a href={`${process.env.PUBLIC_URL}/images/capture/gallery/dtl/${item.name}.jpg`}
-                                        className="relative inline-flex justify-center items-center z-100 mt-6 px-2 py-1 border border-white/20 text-white/70 hover:border-white/100 hover:text-white/100"
-                                        target="_blank" rel="noopener noreferrer">상세페이지<FiExternalLink className="ml-1 opacity-50"/>
-                                        </a> */}
+                                    <h5 className="slide__number relative mb-6 after:content-[''] after:absolute after:-bottom-2 after:w-4 after:m-autoafter:h-[2px] pb-1  after:left-0 after:bg-white after:mt-6 ">{index + 1} </h5>
+                                    <h3 className="slide__title font-semibold text-3xl mb-4 text-left w-[fill-available] truncate whitespace-nowrap overflow-hidden text-ellipsis" title={item.title}>{item.title}</h3>
+                                    <h4 className="slide__subtitle text-sm opacity-80 -mt-3 text-left h-14 ">{item.subtitle}</h4>
+                                    <Link to={`2017/${index}/${item.id}`}  className="relative inline-flex justify-center items-center z-100 mt-6 px-2 py-1 border border-white/20 text-white/70 hover:border-white/100 hover:text-white/100">Link</Link>
                                 </article>
                             </section>
                             

@@ -10,9 +10,11 @@ import NotFound from './routes/notFound.jsx';
 import "slick-carousel/slick/slick.css";
 import  "slick-carousel/slick/slick-theme.css";
 import SubPage from './routes/subpage.jsx';
+import SubPage_Re from "./routes/subpage_re.jsx";
 
 function App() {
-  const [data, setData] = useState([]);
+  const [data2017, setData2017] = useState([]);
+  const [data2024, SetData2024] = useState([]);
   // const [realtime, setRealtime] = useState([]);
 
   useEffect(() => {
@@ -25,9 +27,27 @@ function App() {
               ...doc.data(),
               id: doc.id
           }));
-          setData(data);
+          setData2017(data);
           return data;
       }
+
+      const fetchData2 = async () => {
+        try {
+            const collectionRef = collection(db, '02_Joongsan', 'detail', '2024');
+            const querySnapshot = await getDocs(collectionRef);
+
+            // 가져온 문서들을 배열로 변환하여 상태 업데이트
+            const fetchedData = querySnapshot.docs.map(doc => ({
+                id: doc.id, // 문서 ID
+                ...doc.data() // 문서 데이터 (name 등)
+            }));
+
+            SetData2024(fetchedData); // 상태 업데이트
+        } catch (error) {
+            console.error("데이터를 가져오는 중 오류 발생:", error);
+        }
+    };
+
       // 파이어베이스 리얼타임 데이터베이스
       // const fetchData2 = async () => {
 
@@ -42,14 +62,15 @@ function App() {
       // };
   
       fetchData1();
-      // fetchData2();
+      fetchData2();
   }, []);
   return (
     <div className="App">
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
-        <Route path="/pages/:id" element={<SubPage data={data} />} />
+        <Route path="/2017/:id/:index" element={<SubPage data={data2017} />} />
+        <Route path="/2024/:id/:index" element={<SubPage_Re data={data2024} />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
