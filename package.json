@@ -1,7 +1,7 @@
 {
   "name": "portfolio-design",
   "version": "0.1.0",
-  "homepage":"/",
+  "homepage": "/",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
@@ -19,6 +19,7 @@
     "react-slick": "^0.30.2",
     "sass": "^1.85.0",
     "slick-carousel": "^1.8.1",
+    "uuid": "^11.1.0",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
