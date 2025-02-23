@@ -1,5 +1,5 @@
 
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import BackgroundBall from "../components/bgBall";
 import Gnb from "../components/gnb";
 import Footer from "../layout/footer";
@@ -15,6 +15,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 function Home() {
     const [data, setData] = useState([]);
+    console.log(data);
     const [loading, setLoading] = useState(true);
     useEffect(() => {
        

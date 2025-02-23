@@ -72,13 +72,17 @@ function SkillBar({ name, percent }) {
       }
     );
 
-    if (skillBarRef.current) {
-      observer.observe(skillBarRef.current);
+    // ref를 변수에 복사하여 사용하는 방식
+    const currentSkillBarRef = skillBarRef.current;
+
+    if (currentSkillBarRef) {
+      observer.observe(currentSkillBarRef);
     }
 
     return () => {
-      if (skillBarRef.current) {
-        observer.unobserve(skillBarRef.current);
+      // cleanup에서는 복사된 변수 사용
+      if (currentSkillBarRef) {
+        observer.unobserve(currentSkillBarRef);
       }
     };
   }, [percent]);

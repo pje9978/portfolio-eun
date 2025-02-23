@@ -1,7 +1,7 @@
 import { collection, getDocs } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { db } from "../firebase";
-import { FiExternalLink } from "react-icons/fi";
+// import { FiExternalLink } from "react-icons/fi";
 import Slider from "react-slick";
 import { Link } from "react-router-dom";
 
@@ -92,11 +92,12 @@ function Gallery() {
                                 <figure className="slide__img-wrap cursor-pointer">
                                     {/* <div  alt={item.name} className="slide__img w-full bg-cover bg-center bg-no-repeat " style={{backgroundImage: `url(${process.env.PUBLIC_URL}/images/capture/gallery/thumb/${item.name}.jpg)`}}/> */}
                                 <img src={`${process.env.PUBLIC_URL}/images/capture/gallery/thumb/${item.name}.jpg`} alt="img" />
+                               
                                 </figure>
                                 {/* <h2 className="slide__side">{item.title}</h2> */}
                                 <article className="slide__title-wrap flex flex-col justify-start items-start p-4">
                                     <h5 className="slide__number relative mb-6 after:content-[''] after:absolute after:-bottom-2 after:w-4 after:m-autoafter:h-[2px] pb-1  after:left-0 after:bg-white after:mt-6 ">{index + 1} </h5>
-                                    <h3 className="slide__title font-semibold text-3xl mb-4 text-left w-[fill-available] truncate whitespace-nowrap overflow-hidden text-ellipsis" title={item.title}>{item.title}</h3>
+                                    <h3 className="slide__title font-semibold text-3xl mb-4 text-left w-screen truncate whitespace-nowrap overflow-hidden text-ellipsis" title={item.title}>{item.title}</h3>
                                     <h4 className="slide__subtitle text-sm opacity-80 -mt-3 text-left h-14 ">{item.subtitle}</h4>
                                     <Link to={`2017/${index}/${item.id}`}  className="relative inline-flex justify-center items-center z-100 mt-6 px-2 py-1 border border-white/20 text-white/70 hover:border-white/100 hover:text-white/100">Link</Link>
                                 </article>
