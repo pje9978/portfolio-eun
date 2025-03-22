@@ -4,7 +4,7 @@
       "projects": [
         {
           "id": 1,
-          "name": "Project Alpha",
+          "name": "WSG9890",
           "description": "A project about Alpha designs.",
           "imageUrls": [
             "WSG9890_01.gif",
@@ -55,8 +55,8 @@
                 "CF-918A(BT)_25.jpg",
                 "CF-918A(BT)_spec.jpg"
           ]
-          },
-          {
+        },
+        {
             "id": 3,
             "name": "WSG9900",
             "description": "A project about Alpha designs.",
@@ -83,7 +83,8 @@
                 "WSG9900_20.gif",
                 "WSG9900_21.jpg"
           ]
-          },{
+        },
+        {
             "id": 4,
             "name": "WK3710",
             "description": "A project about Alpha designs.",
@@ -115,7 +116,8 @@
                 "WK3710_02_11.gif",
                 "WK3710_02_12.jpg"
           ]
-          },{
+        },
+        {
             "id": 5,
             "name": "WM1089",
             "description": "A project about Alpha designs.",
@@ -134,8 +136,9 @@
                 "WM1089_12.jpg",
                 "WM1089_13.jpg"
           ]
-          },{
-            "id": 06,
+        },
+        {
+            "id": 6,
             "name": "GL-40A",
             "description": "A project about Alpha designs.",
             "imageUrls": [
@@ -160,148 +163,138 @@
                 "GL-40A_18.gif",
                 "GL-40A_19.jpg"
           ]
-          },{
-            "id": 7,
-            "name": "WK2808",
-            "description": "A project about Alpha designs.",
-            "imageUrls": [
-                "WK2808_01_01.jpg",
-                "WK2808_01_02.jpg",
-                "WK2808_01_03.gif",
-                "WK2808_01_04.jpg",
-                "WK2808_01_05.jpg",
-                "WK2808_01_06.gif",
-                "WK2808_01_07.jpg",
-                "WK2808_01_08.gif",
-                "WK2808_01_09.jpg",
-                "WK2808_01_10.gif",
-                "WK2808_01_11.gif",
-                "WK2808_01_12.jpg",
-                "WK2808_01_13.jpg",
-                "WK2808_01_14.jpg",
-                "WK2808_01_15.jpg",
-                "WK2808_01_16.jpg",
-                "WK2808_01_17.jpg",
-                "WK2808_01_18.jpg",
-                "WK2808_01_19.jpg",
-                "WK2808_01_20.jpg",
-                "WK2808_01_21.gif",
-                "WK2808_02_01.jpg",
-                "WK2808_02_02.jpg",
-                "WK2808_02_03.jpg",
-                "WK2808_02_04.jpg",
-                "WK2808_02_05.jpg",
-                "WK2808_02_06.jpg",
-                "WK2808_02_07.jpg"
-          ]
-          },{
-            "id": 8,
-            "name": "GL15A",
-            "description": "A project about Alpha designs.",
-            "imageUrls": [
-                "GL15A_01.jpg",
-                "GL15A_02.gif",
-                "GL15A_03.jpg",
-                "GL15A_04.gif",
-                "GL15A_05.jpg",
-                "GL15A_06.jpg",
-                "GL15A_07.gif",
-                "GL15A_08.jpg",
-                "GL15A_09.gif",
-                "GL15A_10.jpg",
-                "GL15A_11.gif",
-                "GL15A_12.jpg",
-                "GL15A_13.gif",
-                "GL15A_14.jpg",
-                "GL15A_15.gif",
-                "GL15A_16.jpg",
-                "GL15A_17.jpg",
-                "GL15A_18.jpg",
-                "GL15A_19.jpg",
-                "GL15A_20.jpg",
-                "GL15A_21.jpg"
-          ]
-          },
-          {
-            "id": 9,
-            "name": "GL15A",
-            "description": "A project about Alpha designs.",
-            "imageUrls": [
-                "GL15A_01.jpg",
-                "GL15A_02.gif",
-                "GL15A_03.jpg",
-                "GL15A_04.gif",
-                "GL15A_05.jpg",
-                "GL15A_06.jpg",
-                "GL15A_07.gif",
-                "GL15A_08.jpg",
-                "GL15A_09.gif",
-                "GL15A_10.jpg",
-                "GL15A_11.gif",
-                "GL15A_12.jpg",
-                "GL15A_13.gif",
-                "GL15A_14.jpg",
-                "GL15A_15.gif",
-                "GL15A_16.jpg",
-                "GL15A_17.jpg",
-                "GL15A_18.jpg",
-                "GL15A_19.jpg",
-                "GL15A_20.jpg",
-                "GL15A_21.jpg"
-          ]
-          },
-          {
-            "id": 10,
-            "name": "WH6030",
-            "description": "A project about Alpha designs.",
-            "imageUrls": [
-                "WH6030_01_06.jpg",
-                "WH6030_01_01.jpg",
-                "WH6030_01_02.gif",
-                "WH6030_01_03.gif",
-                "WH6030_01_04.gif",
-                "WH6030_01_05.gif",
-                "WH6030_01_07.gif",
-                "WH6030_01_08.jpg",
-                "WH6030_01_09.gif",
-                "WH6030_01_10.gif",
-                "WH6030_01_11.gif",
-                "WH6030_01_12.jpg",
-                "WH6030_01_13.jpg",
-                "WH6030_01_14.gif",
-                "WH6030_01_15.jpg",
-                "WH6030_01_16.jpg",
-                "WH6030_01_17.gif",
-                "WH6030_01_18.jpg",
-                "WH6030_01_19.jpg",
-                "WH6030_01_20.jpg",
-                "WH6030_01_21.jpg",
-                "WH6030_01_22.jpg",
-                "WH6030_01_23.gif",
-                "WH6030_01_24.jpg",
-                "WH6030_02_01.jpg",
-                "WH6030_02_02.gif",
-                "WH6030_02_03.gif",
-                "WH6030_02_04.gif",
-                "WH6030_02_05.gif",
-                "WH6030_02_06.jpg",
-                "WH6030_02_07.jpg",
-                "WH6030_02_08.jpg",
-                "WH6030_02_09.jpg",
-                "WH6030_02_10.jpg"
-          ]
-          }
-
-      ]
-    },
-    {
-      "year": 2025,
-      "projects": [
+        },
         {
-          "id": 3,
-          "name": "Project Gamma",
-          "description": "Gamma's futuristic designs.",
-          "imageUrls": ["WSG9910_01.gif", "WSG9910_02.gif", "WSG9910_03.jpg"]
+          "id": 7,
+          "name": "WK2808",
+          "description": "A project about Alpha designs.",
+          "imageUrls": [
+              "WK2808_01_01.jpg",
+              "WK2808_01_02.jpg",
+              "WK2808_01_03.gif",
+              "WK2808_01_04.jpg",
+              "WK2808_01_05.jpg",
+              "WK2808_01_06.gif",
+              "WK2808_01_07.jpg",
+              "WK2808_01_08.gif",
+              "WK2808_01_09.jpg",
+              "WK2808_01_10.gif",
+              "WK2808_01_11.gif",
+              "WK2808_01_12.jpg",
+              "WK2808_01_13.jpg",
+              "WK2808_01_14.jpg",
+              "WK2808_01_15.jpg",
+              "WK2808_01_16.jpg",
+              "WK2808_01_17.jpg",
+              "WK2808_01_18.jpg",
+              "WK2808_01_19.jpg",
+              "WK2808_01_20.jpg",
+              "WK2808_01_21.gif",
+              "WK2808_02_01.jpg",
+              "WK2808_02_02.jpg",
+              "WK2808_02_03.jpg",
+              "WK2808_02_04.jpg",
+              "WK2808_02_05.jpg",
+              "WK2808_02_06.jpg",
+              "WK2808_02_07.jpg"
+        ]
+        },
+        {
+          "id": 8,
+          "name": "GL15A",
+          "description": "A project about Alpha designs.",
+          "imageUrls": [
+              "GL15A_01.jpg",
+              "GL15A_02.gif",
+              "GL15A_03.jpg",
+              "GL15A_04.gif",
+              "GL15A_05.jpg",
+              "GL15A_06.jpg",
+              "GL15A_07.gif",
+              "GL15A_08.jpg",
+              "GL15A_09.gif",
+              "GL15A_10.jpg",
+              "GL15A_11.gif",
+              "GL15A_12.jpg",
+              "GL15A_13.gif",
+              "GL15A_14.jpg",
+              "GL15A_15.gif",
+              "GL15A_16.jpg",
+              "GL15A_17.jpg",
+              "GL15A_18.jpg",
+              "GL15A_19.jpg",
+              "GL15A_20.jpg",
+              "GL15A_21.jpg"
+        ]
+        },
+        {
+          "id": 9,
+          "name": "GL15A",
+          "description": "A project about Alpha designs.",
+          "imageUrls": [
+              "GL15A_01.jpg",
+              "GL15A_02.gif",
+              "GL15A_03.jpg",
+              "GL15A_04.gif",
+              "GL15A_05.jpg",
+              "GL15A_06.jpg",
+              "GL15A_07.gif",
+              "GL15A_08.jpg",
+              "GL15A_09.gif",
+              "GL15A_10.jpg",
+              "GL15A_11.gif",
+              "GL15A_12.jpg",
+              "GL15A_13.gif",
+              "GL15A_14.jpg",
+              "GL15A_15.gif",
+              "GL15A_16.jpg",
+              "GL15A_17.jpg",
+              "GL15A_18.jpg",
+              "GL15A_19.jpg",
+              "GL15A_20.jpg",
+              "GL15A_21.jpg"
+        ]
+        },
+        {
+          "id": 10,
+          "name": "WH6030",
+          "description": "A project about Alpha designs.",
+          "imageUrls": [
+              "WH6030_01_06.jpg",
+              "WH6030_01_01.jpg",
+              "WH6030_01_02.gif",
+              "WH6030_01_03.gif",
+              "WH6030_01_04.gif",
+              "WH6030_01_05.gif",
+              "WH6030_01_07.gif",
+              "WH6030_01_08.jpg",
+              "WH6030_01_09.gif",
+              "WH6030_01_10.gif",
+              "WH6030_01_11.gif",
+              "WH6030_01_12.jpg",
+              "WH6030_01_13.jpg",
+              "WH6030_01_14.gif",
+              "WH6030_01_15.jpg",
+              "WH6030_01_16.jpg",
+              "WH6030_01_17.gif",
+              "WH6030_01_18.jpg",
+              "WH6030_01_19.jpg",
+              "WH6030_01_20.jpg",
+              "WH6030_01_21.jpg",
+              "WH6030_01_22.jpg",
+              "WH6030_01_23.gif",
+              "WH6030_01_24.jpg",
+              "WH6030_02_01.jpg",
+              "WH6030_02_02.gif",
+              "WH6030_02_03.gif",
+              "WH6030_02_04.gif",
+              "WH6030_02_05.gif",
+              "WH6030_02_06.jpg",
+              "WH6030_02_07.jpg",
+              "WH6030_02_08.jpg",
+              "WH6030_02_09.jpg",
+              "WH6030_02_10.jpg"
+        ]
         }
       ]
     }

@@ -73,7 +73,15 @@ function Gallery() {
         fetchData();
         
     }, []);
-    
+      const [url, setUrl] = useState([]);
+  
+    useEffect(() => {
+      fetch('/data/02_Joongsan.json') // JSON 파일 경로 지정
+        .then((response) => response.json())
+        .then((jsonData) => setUrl(jsonData))
+        .catch((error) => console.error("Error loading JSON:", error));
+    }, []);
+      console.log(url);
     return ( <>
             <section id="gallery" className="mainpage mt-40" data-aos="fade-up" data-aos-duration="1000" >
                 <header className="text-center">
@@ -107,6 +115,20 @@ function Gallery() {
 
                     </Slider>
                     
+                </div>
+                <div>
+                  {url.map((urls) => (
+                    <>
+                    {urls.projects.map((project)=>(
+                      <>
+                       <p>{project.name}</p>
+                        {project.imageUrls.map((image,index)=>(
+                           <img key={index} src={`http://pje9978.ipdisk.co.kr:8000/list/HDD1/Work/02_Joongsan/2024/${project.id}_${project.name}/thumb/${image}`} alt={project.name} className="w-full h-auto rounded" />
+                        ))}
+                      </>
+                    ))}
+                    </>
+                  ))}
                 </div>
                 <div className="icon1 animate-bounce flex justify-center flex-col items-center mt-6">
                     <span className="text-xs opacity-80 z-0 text-center"> 이미지를 클릭해 다양한 그래픽 디자인을 확인하세요.</span>

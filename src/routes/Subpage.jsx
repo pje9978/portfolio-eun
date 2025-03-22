@@ -31,7 +31,6 @@ function SubPage(props) {
         <BackgroundBall />
         <main id="data-container" className="btn relative z-10 w-screen" >
             <div className="container mx-auto px-6">
-                
                 <section aria-label="intro" className="w-full relative pt-24">
                     <p className="text-xs tracking-widest flex flex-col mb-12 opacity-50 after:content-[''] after:w-[1px] after:mx-auto  after:h-[20px] after:bg-[--primary] after:mt-12">
                         <span className=" rounded px-1 leading-3">Web Design</span>
