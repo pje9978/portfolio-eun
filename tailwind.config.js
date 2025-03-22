@@ -6,5 +6,7 @@ module.exports = {
   theme: {
     extend: {},
   },
-  plugins: [],
+  plugins: [
+    require("tailwindcss-animated"), // 🛠️ 추가해야 함!
+  ]
 }

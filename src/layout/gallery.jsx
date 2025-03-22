@@ -95,41 +95,22 @@ function Gallery() {
                 <div className="slider-container container mx-auto overflow-hidden">
                     <Slider {...settings} className="cursor-pointer flex justify-center items-center">
                         {data.map((item,index) => (
-                           
-                            <section key={item.id} className="slide container mx-auto py-24 flex p-2">
+                            <div key={item.id} className="slide container mx-auto py-24 flex p-2">
                                 <figure className="slide__img-wrap cursor-pointer">
-                                    {/* <div  alt={item.name} className="slide__img w-full bg-cover bg-center bg-no-repeat " style={{backgroundImage: `url(${process.env.PUBLIC_URL}/images/capture/gallery/thumb/${item.name}.jpg)`}}/> */}
                                 <img src={`${process.env.PUBLIC_URL}/images/capture/gallery/thumb/${item.name}.jpg`} alt="img" />
-                               
                                 </figure>
-                                {/* <h2 className="slide__side">{item.title}</h2> */}
                                 <article className="slide__title-wrap flex flex-col justify-start items-start p-4">
                                     <h5 className="slide__number relative mb-6 after:content-[''] after:absolute after:-bottom-2 after:w-4 after:m-autoafter:h-[2px] pb-1  after:left-0 after:bg-white after:mt-6 ">{index + 1} </h5>
                                     <h3 className="slide__title font-semibold text-3xl mb-4 text-left w-screen truncate whitespace-nowrap overflow-hidden text-ellipsis" title={item.title}>{item.title}</h3>
                                     <h4 className="slide__subtitle text-sm opacity-80 -mt-3 text-left h-14 ">{item.subtitle}</h4>
                                     <Link to={`2017/${index}/${item.id}`}  className="relative inline-flex justify-center items-center z-100 mt-6 px-2 py-1 border border-white/20 text-white/70 hover:border-white/100 hover:text-white/100">Link</Link>
                                 </article>
-                            </section>
+                            </div>
                             
                         ))}   
-
                     </Slider>
-                    
                 </div>
-                <div>
-                  {url.map((urls) => (
-                    <>
-                    {urls.projects.map((project)=>(
-                      <>
-                       <p>{project.name}</p>
-                        {project.imageUrls.map((image,index)=>(
-                           <img key={index} src={`http://pje9978.ipdisk.co.kr:8000/list/HDD1/Work/02_Joongsan/2024/${project.id}_${project.name}/thumb/${image}`} alt={project.name} className="w-full h-auto rounded" />
-                        ))}
-                      </>
-                    ))}
-                    </>
-                  ))}
-                </div>
+              
                 <div className="icon1 animate-bounce flex justify-center flex-col items-center mt-6">
                     <span className="text-xs opacity-80 z-0 text-center"> 이미지를 클릭해 다양한 그래픽 디자인을 확인하세요.</span>
                     <svg className=" mt-2" width="40px" height="40px" viewBox="0 0 24 24" fill="none"

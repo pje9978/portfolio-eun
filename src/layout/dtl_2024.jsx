@@ -62,31 +62,17 @@ function Dtl2024() {
                 </header>
                 <section>
                     <div className="slider-container container mx-auto overflow-hidden">
-                        <Slider {...settings} className="cursor-pointer flex justify-center items-center">
-                            {/* {data.map((item) => (
-                            <section key={item.id}>
-                                <strong>ID:</strong> {item.id}, <strong>Name:</strong> {item.name}
-                                <ul>
-                                        {item.url?.map((link, index) => (
-                                            <li key={index}>
-                                                <a href={link} target="_blank" rel="noopener noreferrer">{link}</a>
-                                            </li>
-                                        )) || null}
-                                </ul>
-
-                            </section>
-                            ))} */}
+                        {/* <Slider {...settings} className="cursor-pointer flex justify-center items-center">
 
                             {data.map((item,index) => (
                                 <section key={item.index} className="slide container mx-auto py-24 flex p-2 ">
                                     <figure className="slide__img-wrap cursor-pointer">
-                                        {/* <div  alt={item.name} className="slide__img w-full bg-cover bg-center bg-no-repeat " style={{backgroundImage: `url(${process.env.PUBLIC_URL}/images/capture/gallery/thumb/${item.name}.jpg)`}}/> */}
                                     <img src={item.thumb} alt="img" className="w-[600px] text-center mx-auto" />
                                     </figure>
-                                    {/* <h2 className="slide__side">{item.title}</h2> */}
+                            
                                     <article className="slide__title-wrap flex flex-col justify-start items-start p-4 mx-auto">
                                         <h5 className="slide__number relative mb-6 after:content-[''] after:absolute after:-bottom-2 after:w-4 after:m-auto after:h-[2px] pb-1 after:left-0 after:bg-white after:mt-6 text-center">
-                                        {/* {index + 1} */}1
+                                       1
                                         </h5>
                                             <h3 className="slide__title font-semibold text-3xl mb-4 text-left w-screen truncate whitespace-nowrap overflow-hidden text-ellipsis" >{item.title}</h3>
                                             <h4 className="slide__subtitle text-sm opacity-80 -mt-3 text-left h-14 ">{item.subtitle}</h4>
@@ -96,7 +82,7 @@ function Dtl2024() {
                                 
                             ))}
 
-                        </Slider>
+                        </Slider> */}
                         
                     </div>
                 </section>

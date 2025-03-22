@@ -11,13 +11,20 @@ import "slick-carousel/slick/slick.css";
 import  "slick-carousel/slick/slick-theme.css";
 import SubPage from './routes/Subpage.jsx';
 import SubPageRe from "./routes/SubpageRe.jsx";
+import AdminPage from "./routes/AdminPage.jsx";
+import AdminSubPage from "./routes/AdminSubPage.jsx";
 
 function App() {
+  
   const [data2017, setData2017] = useState([]);
   const [data2024, SetData2024] = useState([]);
+  const [projects, setProjects] = useState([]);
   // const [realtime, setRealtime] = useState([]);
 
+  const SECRET_ADMIN_PATH = process.env.REACT_APP_ADMIN_PATH || "/admin-hidden"; 
+  console.log("관리자 페이지 경로:", SECRET_ADMIN_PATH);
   useEffect(() => {
+    
       const fetchData1 = async () => {
           // 파이어베이스 클라우드 데이터베이스
           const usersCollectionRef = collection(db, 'gallery'); // 참조
@@ -47,7 +54,22 @@ function App() {
             console.error("데이터를 가져오는 중 오류 발생:", error);
         }
     };
+    const fetchData3 = async () => {
+      try {
+          const collectionRef = collection(db, 'projects');
+          const querySnapshot = await getDocs(collectionRef);
 
+          // 가져온 문서들을 배열로 변환하여 상태 업데이트
+          const fetchedData = querySnapshot.docs.map(doc => ({
+              id: doc.id, // 문서 ID
+              ...doc.data() // 문서 데이터 (name 등)
+          }));
+
+          setProjects(fetchedData); // 상태 업데이트
+      } catch (error) {
+          console.error("데이터를 가져오는 중 오류 발생:", error);
+      }
+  };
       // 파이어베이스 리얼타임 데이터베이스
       // const fetchData2 = async () => {
 
@@ -63,7 +85,9 @@ function App() {
   
       fetchData1();
       fetchData2();
+      fetchData3();
   }, []);
+  
   return (
     <div className="App">
       <Routes>
@@ -72,6 +96,10 @@ function App() {
         <Route path="/2017/:id/:index" element={<SubPage data={data2017} />} />
         <Route path="/2024/:id/:index" element={<SubPageRe data={data2024} />} />
         <Route path="*" element={<NotFound />} />
+             {/* Admin Route without a secret path */}
+        <Route path={SECRET_ADMIN_PATH} element={<AdminPage data={projects} />}>
+        </Route>
+        <Route path=":id" element={<AdminSubPage data={projects} />} />
       </Routes>
     </div>
   );
