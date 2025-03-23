@@ -24,19 +24,7 @@ export default function AdminPage() {
 
     const [showSplitImagesModal, setShowSplitImagesModal] = useState(false);
     const hostingURL = process.env.REACT_APP_HOSTING_URL;
-    // const fetchProjects = async () => {
-    //     try {
-    //         const querySnapshot = await getDocs(collection(db, "projects"));
-    //         const projectsList = querySnapshot.docs.map(doc => ({
-    //             id: doc.id,
-    //             ...doc.data()
-    //         }));
-    //         // Update your state with the new projects list (assuming you use React's useState)
-    //         setProjects(projectsList); // Replace with your state update logic
-    //     } catch (error) {
-    //         console.error("Error fetching projects: ", error);
-    //     }
-    // };
+
     
     const handleProjectNameChange = (e) => setProjectName(e.target.value);
     useEffect(() => {
@@ -69,7 +57,6 @@ export default function AdminPage() {
         });
 
         return {
-            // thumbnail: `${hostingURL}/${year}/Detail/${projectNameClean}/thumb.jpg`,
             thumbnail: `Detail/${projectNameClean}/thumb.jpg`,
             // fullImage: `${hostingURL}/${year}/Detail/${projectNameClean}/${projectNameClean}.jpg`,
             fullImage: `Detail/${projectNameClean}/${projectNameClean}.jpg`,

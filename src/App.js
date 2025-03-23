@@ -22,7 +22,7 @@ function App() {
   // const [realtime, setRealtime] = useState([]);
 
   const SECRET_ADMIN_PATH = process.env.REACT_APP_ADMIN_PATH || "/admin-hidden"; 
-  console.log("관리자 페이지 경로:", SECRET_ADMIN_PATH);
+//   console.log("관리자 페이지 경로:", SECRET_ADMIN_PATH);
   useEffect(() => {
     
       const fetchData1 = async () => {
@@ -94,7 +94,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/2017/:id/:index" element={<SubPage data={data2017} />} />
-        <Route path="/2024/:id/:index" element={<SubPageRe data={data2024} />} />
+        <Route path="/2024/:id/:index" element={<AdminSubPage data={projects} />} />
         <Route path="*" element={<NotFound />} />
              {/* Admin Route without a secret path */}
         <Route path={SECRET_ADMIN_PATH} element={<AdminPage data={projects} />}>

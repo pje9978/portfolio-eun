@@ -1,38 +1,45 @@
 import { collection,  getDocs, getFirestore } from "firebase/firestore";
 import { useEffect, useState } from "react";
-import Slider from "react-slick";
 import { Link } from "react-router-dom";
-
-
+import '../styles/_macbook.scss';
 
 function Dtl2024() {
+    const [showModal, setShowModal] = useState(false);
+    const [isEditing, setIsEditing] = useState(false);
+    const [projectName, setProjectName] = useState("");
+    const [projectTitle, setProjectTitle] = useState("");
+    const [projectYearMonth, setProjectYearMonth] = useState("");
+    const [projectYear, setProjectYear] = useState("");
+    const [description, setDescription] = useState("");
+    const [thumbnailImage, setThumbnailImage] = useState("");
+    const [fullImage, setFullImage] = useState("");
+    const [splitImages, setSplitImages] = useState("");
+    const [projectMemo, setProjectMemo] = useState("");
+    const [filteredProjects, setFilteredProjects] = useState([]);
+    const [selectedProject, setSelectedProject] = useState(null);
+    const [viewAll, setViewAll] = useState(true); 
+    const [selectedYear, setSelectedYear] = useState(""); 
+    const years = Array.from(new Set(filteredProjects.map((project) => project.projectYearMonth.split(".")[0])));
 
-    const settings = {
-      dots: true,
-      infinite: true,
-      speed: 500,
-      slidesToShow: 3,
-      slidesToScroll: 3
-    };
-
-//   const basePath = "http://pje9978.ipdisk.co.kr:8000/list/HDD1/Work/02_Joongsan/2024/Detail/";
-//   const [projectsByYear, setProjectsByYear] = useState([]); // 전체 데이터를 저장
-//   const [currentYear, setCurrentYear] = useState(null); // 선택된 년도
-//   const [currentProject, setCurrentProject] = useState(null); // 선택된 프로젝트
-
-//   // 현재 선택된 년도의 프로젝트 목록
-//   const currentYearProjects =
-//     projectsByYear.find((yearGroup) => yearGroup.year === currentYear)?.projects || [];
+    const [showSplitImagesModal, setShowSplitImagesModal] = useState(false);
+    const hostingURL = process.env.REACT_APP_HOSTING_URL;
 
     const db = getFirestore();
     const [data, setData] = useState([]);
 
-
+    const filterByYear = (year) => {
+        setSelectedYear(year);
+        setViewAll(false); 
+      };
+    const showAllProjects = () => {
+    setSelectedYear("");
+    setViewAll(true); 
+    };
     // 컴포넌트가 마운트될 때 데이터 가져오기
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const collectionRef = collection(db, '02_Joongsan', 'detail', '2024');
+                const collectionRef = collection(db, 'projects');
                 const querySnapshot = await getDocs(collectionRef);
     
                 // 가져온 문서들을 배열로 변환하여 상태 업데이트
@@ -49,7 +56,32 @@ function Dtl2024() {
     
         fetchData();
     }, [db]);
-    console.log(data);
+
+        
+    const showSplitImages = (project) => {
+        setSelectedProject(project);
+        setShowSplitImagesModal(true);
+    };
+
+    const hideSplitImagesModal = () => {
+        setShowSplitImagesModal(false);
+        setSelectedProject(null);
+    };
+
+    const startEditProject = (project) => {
+        setIsEditing(true);
+        setSelectedProject(project);
+        setProjectName(project.projectName);
+        setProjectTitle(project.projectTitle);
+        setProjectYearMonth(project.projectYearMonth);
+        setProjectYear(project.projectYear);
+        setDescription(project.description);
+        setThumbnailImage(project.thumbnailImage);
+        setFullImage(project.fullImage);
+        setSplitImages(project.splitImages.join("\n"));
+        setProjectMemo(project.projectMemo);
+        setShowModal(true);
+    };
     return ( <>
             <section className="mainpage mt-40" data-aos="fade-up" data-aos-duration="1000" >
                 <header className="text-center">
@@ -62,28 +94,121 @@ function Dtl2024() {
                 </header>
                 <section>
                     <div className="slider-container container mx-auto overflow-hidden">
-                        {/* <Slider {...settings} className="cursor-pointer flex justify-center items-center">
+                        <div className="flex flex-wrap flex-col justify-between">
+                            <ul className="inline-flex border-b">
+                                <li>
+                                    <button
+                                        className={`px-4 py-2 ${viewAll ? "font-bold opacity-100 border-b-2" : "opacity-60"}`}
+                                        onClick={showAllProjects}
+                                    >
+                                        전체보기
+                                    </button>
+                                </li>
+                                {years.map((year) => (
+                                    <li key={year} >
+                                        <button
+                                            className={`px-8 py-2 ${selectedYear === year ? "font-bold opacity-100 border-b-2" : "opacity-60"}`}
+                                            onClick={() => filterByYear(year)}
+                                        >
+                                            {year}
+                                        </button>
+                                    </li>
+                                ))}
+                            </ul>
 
-                            {data.map((item,index) => (
-                                <section key={item.index} className="slide container mx-auto py-24 flex p-2 ">
-                                    <figure className="slide__img-wrap cursor-pointer">
-                                    <img src={item.thumb} alt="img" className="w-[600px] text-center mx-auto" />
-                                    </figure>
+                        </div>
+                        {/* 프로젝트 불러오기 */}
+                        <section className="bg-zinc-800 p-6">
+                            <div className="grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 overflow-hidden">
+                                {data.map((project) => {
+                                        return (
+                                    <Link to={`/${project.id}`}
+                                        key={project.id} 
+                                        className="cursor-pointer  flex-wrap  group p-4 flex bg-zinc-900  
+                                                transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-lg"
+                                    >
+        
+                                        <div className="flex flex-col text-left items-start justify-between">
+                                            <div className="xl:max-h-[340px]  w-full  md:min-h-[128px] aspect-square">
+                                            <div className="relative group" rel="noopener noreferrer">
+                                            <div className="viewport !m-0 !bg-none overflow-hidden hover:opacity-0">
+                                                <div className=" relative rotate-45 left-[50%] bottom-[50%] aspect-square object-contain transition-opacity duration-300 group-hover:opacity-0 ">
+                                                    {/* 여러 개의 이미지 배치 */}
+            
+                                                    <img
+                                                        src={`${hostingURL}/${project.projectYear}/${project.fullImage}`}
+                                                        alt=""
+                                                        className="absolute w-1/4 right-[0%] top-[50%] -mt-[240%]"
+                                                    />
+                                                    <img
+                                                        src={`${hostingURL}/${project.projectYear}/${project.fullImage}`}
+                                                        alt=""
+                                                        className="absolute w-1/4 left-[50%] top-[15%] -mt-[45%]"
+                                                    />
+                                                    <img
+                                                        src={`${hostingURL}/${project.projectYear}/${project.fullImage}`}
+                                                        alt=""
+                                                        className="absolute w-1/4 left-[25%] top-[0%] mt-[50%]"
+                                                    />
+                                                    <img
+                                                        src={`${hostingURL}/${project.projectYear}/${project.fullImage}`}
+                                                        alt=""
+                                                        className="w-1/4 absolute left-[0%] top-[75%] -mt-[75%]"
+                                                    />
+                                                                                                        <img
+                                                        src={`${hostingURL}/${project.projectYear}/${project.fullImage}`}
+                                                        alt=""
+                                                        className="w-1/4 absolute left-[-25%] top-[-300%] -mt-[75%]"
+                                                    />
+                                                    <img
+                                                        src={`${hostingURL}/${project.projectYear}/${project.fullImage}`}
+                                                        alt=""
+                                                        className="absolute w-1/4 left-[100%] -top-[100%] -mt-[-170%]"
+                                                    />
+                                                </div>
+                                            </div>
+                                            <img
+                                                src={`${hostingURL}/${project.projectYear}/${project.thumbnailImage}`}
+                                                alt="썸네일"
+                                                className="aspect-square object-contain transition-opacity duration-300 group-hover:opacity-100"
+                                            />
+                                            {/* 썸네일 이미지 */}
+                                        </div>
+
+                                            </div>
+                                            <div className="lg:ml-0 lg:w-[54%] flex flex-col w-full md:h-auto h-full ml-4 mt-4">
+                                                <h3 className="w-full text-sm opacity-10 font-semibold text-white overflow-hidden whitespace-nowrap text-ellipsis hidden">{project.projectName}</h3>
+        
+                                                <h3 className="text-base font-semibold text-white overflow-hidden whitespace-nowrap text-ellipsis">{project.projectTitle}</h3>
+                                                <p className=" text-gray-400 max-w-full text-base overflow-hidden whitespace-nowrap text-ellipsis">{project.description}</p>
+                                                <p className="lg:mt-auto ">
+                                                    <button 
+                                                        className="hidden pr-3 inline-flex items-center text-violet-300 mt-2 transition-colors duration-300 ease-in-out hover:text-violet-400"
+                                                        onClick={() => showSplitImages(project)}
+                                                    >
+                                                        <span>분할 Link</span>
+                                                    </button>
+                                                    <a 
+                                                        href={`${hostingURL}/${project.projectYear}/${project.fullImage}`}
+                                                        rel="noopener noreferrer" 
+                                                        className="hidden inline-flex items-center text-violet-300 mt-2 transition-colors duration-300 ease-in-out hover:text-violet-400"
+                                                    >
+                                                        <span>전체 Link</span>
+                                                    </a>
+                                                    <p className="text-gray-500 mt-2 min-h-[42px] bg-black rounded p-2 w-full hidden" title="프로젝트 메모">{project.projectMemo}</p>
+                                                </p>
+
+                                            </div>
+
+        
+                                        </div>
+        
+                                    </Link>
+                                        )
+                                })}
+                            </div>
+                        </section>
                             
-                                    <article className="slide__title-wrap flex flex-col justify-start items-start p-4 mx-auto">
-                                        <h5 className="slide__number relative mb-6 after:content-[''] after:absolute after:-bottom-2 after:w-4 after:m-auto after:h-[2px] pb-1 after:left-0 after:bg-white after:mt-6 text-center">
-                                       1
-                                        </h5>
-                                            <h3 className="slide__title font-semibold text-3xl mb-4 text-left w-screen truncate whitespace-nowrap overflow-hidden text-ellipsis" >{item.title}</h3>
-                                            <h4 className="slide__subtitle text-sm opacity-80 -mt-3 text-left h-14 ">{item.subtitle}</h4>
-                                            <Link to={`2024/${index}/${item.id}`}  className="relative inline-flex justify-center items-center z-100 mt-6 px-2 py-1 border border-white/20 text-white/70 hover:border-white/100 hover:text-white/100">Link</Link>
-                                    </article>
-                                </section>
-                                
-                            ))}
-
-                        </Slider> */}
-                        
                     </div>
                 </section>
 

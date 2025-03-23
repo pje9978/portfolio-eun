@@ -21,7 +21,7 @@ function MacBook_2025({ project }) {
         <>
             <div className="macbook">
                 <div className="screen">
-                    <div className="viewport">
+                    <div className="viewport overflow-hidden">
                         <div className="relative rotate-45 left-[50%] bottom-[50%]">
                             {/* Display spinner while loading */}
                             {loading && (
