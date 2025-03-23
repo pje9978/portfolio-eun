@@ -1,119 +1,75 @@
-import { useLocation, useParams } from "react-router-dom";
+import {  useParams } from "react-router-dom";
 import Gnb from "../components/gnb";
 import '../styles/_macbook.scss';
 import Loading from "../components/loading";
 import BackgroundBall from "../components/bgBall";
-
-import { useEffect } from "react";
 import MacBook_2025 from "../components/subpage/macbook_2025";
 
 export default function AdminSubPage({ data }) {
   // Get 'id' from URL params
   let { id } = useParams();
-  
+  const hostingURL = process.env.REACT_APP_HOSTING_URL;
+
   // Find the specific project from the data using the 'id'
   const project = data.find((item) => item.id === id);
-  console.log(project);
+
+  // Check if project is found
   if (!project) {
-    return <div>Project not found</div>; // Handle case where the project is not found
+    return <Loading />;
   }
-  // const location = useLocation();
 
-  // useEffect(() => {
-  //   // 스크롤을 상단으로 이동시키는 함수 호출
-  //   scrollToTop();
-  // }, [location]);
-
-  // const scrollToTop = () => {
-  //   // 스크롤을 상단으로 이동시키는 함수 작성
-  //   window.scrollTo(0, 0);
-  // };
-  // if (project.length === 0) {
-  //     return <Loading />; // 데이터 로딩 중에는 로딩 메시지를 출력하도록 처리
-  // }
+  console.log(project); // Check the project data
 
   return (
     <div>
-      <Gnb/>
+      <Gnb />
       <BackgroundBall />
-      <h1>{project.name}</h1>
-      {/* Render the rest of the project data here */}
-      <p>{project.description}</p>
-      <main id="data-container" className="btn relative z-10 w-screen" >
-            <div className="container mx-auto px-6">
-                
-                <section aria-label="intro" className="w-full relative pt-24">
-                    <p className="text-xs tracking-widest flex flex-col mb-12 opacity-50 after:content-[''] after:w-[1px] after:mx-auto  after:h-[20px] after:bg-[--primary] after:mt-12">
-                        <span className=" rounded px-1 leading-3">Web Design</span>
-                        <span className=" rounded px-1 leading-3">Web Publishing</span>
-                    </p>
-                    {/* <Device device={props.data[index].device}/> */}
-                    <h2 className="title text-5xl font-semibold mt-6 capitalize">{project.name}</h2>
-                    <h3 className="flex flex-row gap-2 text-center flex-wrap justify-center items-center mt-4">
-                        <span className="bg-black text-white/50 py-1 px-2">사진 보정</span>
-                        <span className="bg-black text-white/50 py-1 px-2">디자인 기획</span>
-                        <span className="bg-black text-white/50 py-1 px-2">레이아웃 디자인</span>
-                        <span className="bg-black text-white/50 py-1 px-2">상세페이지 디자인</span>
-                    </h3>
-                </section>
-                <MacBook_2025 image={project.fullImage} />
-                {/* {project.fullImage?.map((image, index) => (
-                <div key={index}>
-                </div>
-                )) || null} */}
-                {/* {project.images?.map((url, index) => (
-                                        <div key={index}>
-                                           <MacBook_2025 url={url} />
-                                        </div>
-                )) || null} */}
-                        
-              
-                {/* <Language language={project.language}/> */}
-                <article className="text-gray-600 mt-24">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                        className="inline-block w-8 h-8 text-gray-400 mb-8" viewBox="0 0 975.036 975.036">
-                        <path
-                            d="M925.036 57.197h-304c-27.6 0-50 22.4-50 50v304c0 27.601 22.4 50 50 50h145.5c-1.9 79.601-20.4 143.3-55.4 191.2-27.6 37.8-69.399 69.1-125.3 93.8-25.7 11.3-36.8 41.7-24.8 67.101l36 76c11.6 24.399 40.3 35.1 65.1 24.399 66.2-28.6 122.101-64.8 167.7-108.8 55.601-53.7 93.7-114.3 114.3-181.9 20.601-67.6 30.9-159.8 30.9-276.8v-239c0-27.599-22.401-50-50-50zM106.036 913.497c65.4-28.5 121-64.699 166.9-108.6 56.1-53.7 94.4-114.1 115-181.2 20.6-67.1 30.899-159.6 30.899-277.5v-239c0-27.6-22.399-50-50-50h-304c-27.6 0-50 22.4-50 50v304c0 27.601 22.4 50 50 50h145.5c-1.9 79.601-20.4 143.3-55.4 191.2-27.6 37.8-69.4 69.1-125.3 93.8-25.7 11.3-36.8 41.7-24.8 67.101l35.9 75.8c11.601 24.399 40.501 35.2 65.301 24.399z">
-                        </path>
-                    </svg>
-                    <h3 className="title text-3xl font-semibold mt-2 capitalize text-gray-400">Overview</h3>
-                    <h3 className="subTitle text-base mt-6 leading-relaxed w-2/3 mx-auto">{project.subtitle}</h3>
-                   
-                    {/* <Result result={project.result}/> */}
-                    <span rol="line" aria-label="desc-line" className="inline-block h-1 w-10 rounded bg-white/50 my-12"></span>
-                </article>
-                {/* <Iphone url={project.url} title={project.title}/> */}
-                <section className="my-12">
-                    <header>
-                        <h2 className="content__title grid text-center" data-splitting data-effect10>
-                            <span className="md:text-[10vw] font-larger text-[15vw]  opacity-80 -mt-2">pages.</span>
-                        </h2>
-                    </header>            
-                    <article className="flex justify-start mx-auto flex-col max-w-[860px] items-start py-12  p-4 ">
-                         {project.splitImages?.map((urls, index) => (
-                                        <div key={index}>
-                                           <img src={urls} alt="" />
-                                        </div>
-                          )) || null}
-                        
-                        {/* <Page url={project.url} result={project.result} title={project.title}/> */}
-                            
-                    </article>
-                    {/* <ul className="flex justify-center sm:w-[60vw] mx-auto flex-col  sm:flex-row flex-nowrap items-stretch py-12">
-                            <li role="group" aria-label="page" className="flex flex-col w-1/2 md:self-start relative">
-                            </li>
-                    </ul> */}
-                </section> 
 
-               
-               
+      <main id="data-container" className="btn relative z-10 w-screen">
+        <div className="container mx-auto px-6">
+          <section aria-label="intro" className="w-full relative pt-24">
+            <p className="text-xs tracking-widest flex flex-col mb-12 opacity-50 after:content-[''] after:w-[1px] after:mx-auto after:h-[20px] after:bg-[--primary] after:mt-12">
+              <span className="rounded px-1 leading-3">Web Design</span>
+              <span className="rounded px-1 leading-3">Web Publishing</span>
+            </p>
+            <h2 className="title text-5xl font-semibold mt-6 capitalize">{project.projectTitle}</h2>
+            <h3 className="flex flex-row gap-2 text-center flex-wrap justify-center items-center mt-4">
+              <span className="bg-black text-white/50 py-1 px-2">사진 보정</span>
+              <span className="bg-black text-white/50 py-1 px-2">디자인 기획</span>
+              <span className="bg-black text-white/50 py-1 px-2">레이아웃 디자인</span>
+              <span className="bg-black text-white/50 py-1 px-2">상세페이지 디자인</span>
+            </h3>
+          </section>
 
-                {/* {project.link.pdf ? (<a href={props.data[index].link.pdf} className="pdf block border text-xs border-white/50 text-white/80 hover:text-white/100 hover:border-white/100 px-3 py-3 mt-4 text-sm uppercase font-medium"> 기획서 보러가기 </a>) : null } */}
-                
-              
-            </div>
+          <MacBook_2025 project={project} />
 
-        </main>
+          <article className="text-gray-600 mt-24">
+            <h3 className="title text-3xl font-semibold mt-2 capitalize text-gray-400">Overview</h3>
+            <h3 className="subTitle text-base mt-6 leading-relaxed w-2/3 mx-auto">{project.subtitle}</h3>
+            <span rol="line" aria-label="desc-line" className="inline-block h-1 w-10 rounded bg-white/50 my-12"></span>
+          </article>
+
+          <section className="my-12">
+            <header>
+              <h2 className="content__title grid text-center" data-splitting data-effect10>
+                <span className="md:text-[10vw] font-larger text-[15vw] opacity-80 -mt-2">pages.</span>
+              </h2>
+            </header>
+
+            <article className="flex justify-start mx-auto flex-col max-w-[860px] items-start py-12 p-4 m-0">
+              <ul className="flex flex-col">
+                {project.splitImages.map((img, index) => {
+                  return (
+                    <li key={index} className="text-sm break-words">
+                      <img src={`${hostingURL}/${project.projectYear}/${img}`} alt={img} />
+                    </li>
+                  );
+                })}
+              </ul>
+            </article>
+          </section>
+        </div>
+      </main>
     </div>
   );
 }
