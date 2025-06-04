@@ -54,6 +54,10 @@ function Dtl2024() {
     }, [db]);
     
 
+    useEffect(() => {
+        setFilteredProjects(data); // data가 로딩되면 업데이트
+      }, [data]);
+      
         
     const showSplitImages = (project) => {
         setSelectedProject(project);
@@ -82,7 +86,7 @@ function Dtl2024() {
 
         // const years = Array.from(new Set(filteredProjects.map((project) => project.projectYearMonth.split(".")[0])));
         const years = [...new Set(data.map(p => p.projectYear))].sort().reverse();
-    console.log(years);
+
         const filterByYear = (year) => {
              const filtered = data.filter(project => project.projectYear === year);
         setFilteredProjects(filtered);
