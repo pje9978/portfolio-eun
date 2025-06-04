@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Gnb from "../components/gnb";
 import { Link } from "react-router-dom";
 import { db } from "../firebase";
-import { addDoc, collection, deleteDoc, doc, getDocs, updateDoc } from "firebase/firestore";
+import { addDoc, collection, deleteDoc, doc, getDocs, orderBy, query, updateDoc } from "firebase/firestore";
 
 export default function AdminPage() {
     const [showModal, setShowModal] = useState(false);
@@ -13,6 +13,8 @@ export default function AdminPage() {
     const [projectYear, setProjectYear] = useState("");
     const [description, setDescription] = useState("");
     const [thumbnailImage, setThumbnailImage] = useState("");
+    const [thumbnailImage1, setThumbnailImage1] = useState("");
+    const [thumbnailImage2, setThumbnailImage2] = useState("");
     const [fullImage, setFullImage] = useState("");
     const [splitImages, setSplitImages] = useState("");
     const [projectMemo, setProjectMemo] = useState("");
@@ -20,7 +22,6 @@ export default function AdminPage() {
     const [selectedProject, setSelectedProject] = useState(null);
     const [viewAll, setViewAll] = useState(true); 
     const [selectedYear, setSelectedYear] = useState(""); 
-    const years = Array.from(new Set(filteredProjects.map((project) => project.projectYearMonth.split(".")[0])));
 
     const [showSplitImagesModal, setShowSplitImagesModal] = useState(false);
     const hostingURL = process.env.REACT_APP_HOSTING_URL;
@@ -30,18 +31,21 @@ export default function AdminPage() {
     useEffect(() => {
         // Firestore에서 전체 프로젝트 가져오기
         const fetchProjects = async () => {
-            const querySnapshot = await getDocs(collection(db, "projects"));
+            const projectsRef = collection(db, "projects");
+            const projectsQuery = query(projectsRef, orderBy("projectYearMonth", "desc")); // 내림차순 정렬
+            const querySnapshot = await getDocs(projectsQuery);
+    
             const fetchedProjects = querySnapshot.docs.map(doc => ({
                 id: doc.id,
                 ...doc.data()
             }));
+    
             setProjects(fetchedProjects); // 상태 업데이트
             setFilteredProjects(fetchedProjects); // 필터링된 프로젝트 상태 업데이트
         };
-        
+    
         fetchProjects();
     }, []);
-
     const [projects, setProjects] = useState([]);
     const generateUrls = () => {
         const year = projectYearMonth.split(".")[0];
@@ -58,6 +62,8 @@ export default function AdminPage() {
 
         return {
             thumbnail: `Detail/${projectNameClean}/thumb.jpg`,
+            thumbnail1: `Detail/${projectNameClean}/thumb1.jpg`,
+            thumbnail2: `Detail/${projectNameClean}/thumb2.jpg`,
             // fullImage: `${hostingURL}/${year}/Detail/${projectNameClean}/${projectNameClean}.jpg`,
             fullImage: `Detail/${projectNameClean}/${projectNameClean}.jpg`,
             splitImage: splitImageUrls
@@ -66,7 +72,7 @@ export default function AdminPage() {
 
 
     const handleSubmit = async () => {
-        const { thumbnail, fullImage, splitImage } = generateUrls();
+        const { thumbnail1, thumbnail2, thumbnail, fullImage, splitImage } = generateUrls();
         const year = projectYearMonth.split(".")[0]; // 년도만 추출
     
         const newProject = {
@@ -76,6 +82,8 @@ export default function AdminPage() {
             projectYear: year,  // **추가: 년도만 저장**
             description,
             thumbnailImage: thumbnail,
+            thumbnailImage1: thumbnail1,
+            thumbnailImage2: thumbnail2,
             fullImage,
             splitImages: splitImage,
             projectMemo,
@@ -125,16 +133,25 @@ export default function AdminPage() {
         setProjectYear(project.projectYear);
         setDescription(project.description);
         setThumbnailImage(project.thumbnailImage);
+        setThumbnailImage1(project.thumbnailImage1);
+        setThumbnailImage2(project.thumbnailImage2);
         setFullImage(project.fullImage);
         setSplitImages(project.splitImages.join("\n"));
         setProjectMemo(project.projectMemo);
         setShowModal(true);
     };
+
+    // const years = Array.from(new Set(filteredProjects.map((project) => project.projectYearMonth.split(".")[0])));
+    // const years = [...new Set(projects.map(p => p.projectYear))].sort().reverse();
+    const years = Array.from(new Set(projects.map(p => p.projectYear))).sort((a, b) => b - a);
     const filterByYear = (year) => {
+         const filtered = projects.filter(project => project.projectYear === year);
+         filteredProjects(filtered);
         setSelectedYear(year);
         setViewAll(false); 
       };
     const showAllProjects = () => {
+        setFilteredProjects(projects);
     setSelectedYear("");
     setViewAll(true); 
     };
@@ -204,8 +221,8 @@ export default function AdminPage() {
 
                 {/* 등록모달창 */}
                 {showModal && (
-                    <div className="fixed inset-0 text-zinc-700 bg-zinc-900 bg-opacity-50 flex justify-center items-center z-50">
-                        <div className="bg-white p-6 rounded-md mx-4 w-full md:w-[70%] lg:w-[50%]">
+                    <div className="fixed inset-0 text-zinc-700 bg-zinc-900 bg-opacity-50 flex justify-center items-center z-50 overflow-y-auto">
+                        <div className="bg-white p-6 rounded-md mx-4 w-full md:w-[70%] lg:w-[50%] max-h-screen overflow-y-auto">
                             <h2 className="text-lg font-semibold mb-4">{isEditing ? "프로젝트 수정" : "프로젝트 등록"}</h2>
 
                             <div className="mb-4 text-left">
@@ -261,7 +278,18 @@ export default function AdminPage() {
                                     type="text"
                                     className="mt-1 p-2 border border-gray-300 w-full"
                                     placeholder="썸네일 이미지 경로 (자동으로 채워집니다)"
-                                    value={generateUrls().thumbnail}
+                                    value={generateUrls().thumbnail1}
+                                    readOnly
+                                />
+                            </div>
+                            <div className="mb-4 text-left">
+                                <label htmlFor="thumbnailImage" className="block opacity-30 text-sm font-medium text-gray-700">썸네일 이미지 경로 (자동으로 채워집니다)</label>
+                                <input
+                                    id="thumbnailImage"
+                                    type="text"
+                                    className="mt-1 p-2 border border-gray-300 w-full"
+                                    placeholder="썸네일 이미지 경로 (자동으로 채워집니다)"
+                                    value={generateUrls().thumbnail2}
                                     readOnly
                                 />
                             </div>
