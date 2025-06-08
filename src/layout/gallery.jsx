@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 function Gallery() {
 
     const [data, setData] = useState([]);
-    console.log(data)
+
     var settings = {
         focusOnSelect: true,
         className: "center",
@@ -81,14 +81,14 @@ function Gallery() {
         .then((jsonData) => setUrl(jsonData))
         .catch((error) => console.error("Error loading JSON:", error));
     }, []);
-      console.log(url);
+
     return ( <>
             <section id="gallery" className="mainpage mt-40" data-aos="fade-up" data-aos-duration="1000" >
                 <header className="text-center">
                     {/* <h2 className="content__title md:text-[10vw] font-larger text-[15vw]  opacity-80" data-splitting
                         data-effect10>Gallery.</h2> */}
-                    <h2 className="text-xl opacity-50">[2017-2022]</h2>
-                    <h3 className="text-center text-3xl  font-semibold mt-2 "> <span className="block  w-full whitespace-pre-wrap  opacity-100">Previous Company Portfolio:</span>
+                    <h2 className="text-base opacity-50">[2017-2022]</h2>
+                    <h3 className="text-center text-2xl sm:text-3xl  font-semibold mt-2 "> <span className="block  w-full whitespace-pre-wrap  opacity-100">Previous Company Portfolio:</span>
                         <span className="opacity-50">A showcase of various graphic design</span>
                     </h3>
                 </header>

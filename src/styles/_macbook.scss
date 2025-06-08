@@ -4,6 +4,10 @@
     margin: 0 auto;
     max-width: 1200px;
     margin-top: 60px;
+      @media (min-width: 640px) {
+    padding: 0;
+
+  }
 }
 
 .screen {

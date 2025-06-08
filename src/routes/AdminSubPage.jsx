@@ -18,22 +18,21 @@ export default function AdminSubPage({ data }) {
     return <Loading />;
   }
 
-  console.log(project); // Check the project data
 
   return (
-    <div>
+    <div >
       <Gnb />
-      <BackgroundBall />
+      {/* <BackgroundBall /> */}
 
       <main id="data-container" className="btn relative z-10 w-screen">
-        <div className="container mx-auto px-6">
+        <div className="container mx-auto sm:px-6 p-0">
           <section aria-label="intro" className="w-full relative pt-24">
             <p className="text-xs tracking-widest flex flex-col mb-12 opacity-50 after:content-[''] after:w-[1px] after:mx-auto after:h-[20px] after:bg-[--primary] after:mt-12">
               <span className="rounded px-1 leading-3">Web Design</span>
               <span className="rounded px-1 leading-3">Web Publishing</span>
             </p>
-            <h2 className="title text-5xl font-semibold mt-6 capitalize">{project.projectTitle}</h2>
-            <h3 className="flex flex-row gap-2 text-center flex-wrap justify-center items-center mt-4">
+            <h2 className="title text-4xl sm:text-5xl font-semibold mt-6 capitalize">{project.projectTitle}</h2>
+            <h3 className="w-[80%] mx-auto flex flex-row gap-2 text-center flex-wrap justify-center items-center mt-4 text-sm">
               <span className="bg-black text-white/50 py-1 px-2">사진 보정</span>
               <span className="bg-black text-white/50 py-1 px-2">디자인 기획</span>
               <span className="bg-black text-white/50 py-1 px-2">레이아웃 디자인</span>
@@ -41,7 +40,7 @@ export default function AdminSubPage({ data }) {
             </h3>
           </section>
 
-          <MacBook_2025 project={project} />
+          <MacBook_2025 project={project} classNam="" />
 
           <article className="text-gray-600 mt-24">
             <h3 className="title text-3xl font-semibold mt-2 capitalize text-gray-400">Overview</h3>
@@ -56,7 +55,7 @@ export default function AdminSubPage({ data }) {
               </h2>
             </header>
 
-            <article className="flex justify-start mx-auto flex-col max-w-[860px] items-start py-12 p-4 m-0">
+            <article className="flex justify-start mx-auto flex-col max-w-[860px] items-start mt-6 m-0">
               <ul className="flex flex-col">
                 {project.splitImages.map((img, index) => {
                   return (
@@ -66,6 +65,8 @@ export default function AdminSubPage({ data }) {
                   );
                 })}
               </ul>
+              
+              {/* <p className="my-20 justify-center text-center w-full before:content-[''] before:w-[10px] befor:mx-auto before:block before:flex-col before:max-w-fit before:border-b">봐주셔서 감사합니다.</p> */}
             </article>
           </section>
         </div>

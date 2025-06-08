@@ -2,7 +2,6 @@ import { useState } from "react";
 import Loading from "../loading";
 
 function MacBook_2025({ project }) {
-    console.log(project);
 
     const [loading, setLoading] = useState(true); // State to track image loading
     const hostingURL = process.env.REACT_APP_HOSTING_URL;
@@ -19,10 +18,10 @@ function MacBook_2025({ project }) {
 
     return (
         <>
-            <div className="macbook">
+            <div className="macbook !p-0 sm:px-[4%]">
                 <div className="screen">
                     <div className="viewport overflow-hidden">
-                        <div className="relative rotate-45 left-[50%] bottom-[50%]">
+                        <div className="relative">
                             {/* Display spinner while loading */}
                             {loading && (
                                 <svg
@@ -46,7 +45,8 @@ function MacBook_2025({ project }) {
                             )}
 
                             {/* Render images after loading */}
-                            <img
+                            <img   src={`${hostingURL}/${project.projectYear}/${project.thumbnailImage1}`} alt="" />
+                            {/* <img
                                 src={`${hostingURL}/${project.projectYear}/${project.fullImage}`}
                                 alt=""
                                 className="absolute w-1/4 right-[0%] top-[50%] -mt-[240%]"
@@ -75,7 +75,7 @@ function MacBook_2025({ project }) {
                                 alt=""
                                 className="absolute w-1/4 left-[100%] -top-[100%] -mt-[100%]"
                                 onLoad={handleImageLoad}
-                            />
+                            /> */}
                         </div>
                     </div>
                 </div>

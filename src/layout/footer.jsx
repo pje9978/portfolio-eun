@@ -27,16 +27,16 @@ function Footer() {
             </svg> */}
             <div role="group" aria-label="contact" className="container mx-auto flex flex-wrap w-full justify-center mt-6">
                 <section className="flex flex-col justify-center items-center gap-4  tracking-widests w-full">
-                    <h3 className="w-3/4 mx-auto text-3xl opacity-100 -mt-2 font-semibold text-center">Want to work together on a
+                    <h3 className="w-full sm:w-3/4 mx-auto text-2xl sm:text-3xl opacity-100 -mt-2 font-semibold text-center">Want to work together on a
                         project?</h3>
                     <section className="email relative flex flex-col sm:flex-row justify-center items-center">
                         <h4>
-                            <a href="mailto:pje9978@gmail.com" className="copy-button left-0  sm:after:content-['|'] sm:after:mx-1 text-xs  opacity-50 hover:bg-[--primary] hover:text-[--secondary]">📧 pje9978@gmail.com</a>
+                            <a href="mailto:pje9978@gmail.com" className="copy-button left-0  sm:after:content-['|'] sm:after:mx-1 text-sm  opacity-50 hover:bg-[--primary] hover:text-[--secondary]">📧 pje9978@gmail.com</a>
                         </h4>
 
 
-                        <h4 className="sm:after:content-['|'] after:mx-1 text-xs  opacity-50">+82 10 6563 9978</h4>
-                        <h4 className="sm:after:mx-1 text-xs  opacity-50"> Gwanak-gu, Seoul</h4>
+                        <h4 className="sm:after:content-['|'] after:mx-1 text-sm  opacity-50">+82 10 6563 9978</h4>
+                        <h4 className="sm:after:mx-1 text-sm   opacity-50"> Gwanak-gu, Seoul</h4>
                     </section>
                 </section>
 
@@ -44,7 +44,7 @@ function Footer() {
         </footer>
         <div  data-aos="fade-up" data-aos-duration="1000" role="group" aria-label="footer" className="w-full mt-12 py-3 border-t">
                 <article className="container mx-auto flex justify-between p-3 pt-3">
-                    <h5 className=" text-2xl">© 2025
+                    <h5 className=" text-xl sm:text-2xl">© 2025
                     </h5>
                     <section className="time text-2xl flex justify-center items-center sm:flex relative gap-3">
                         <section className="relative flex h-3 w-3">
@@ -54,17 +54,17 @@ function Footer() {
                         </section>
 
                         <div className="relative flex justify-items-end w-full">
-                            <span className="flex absolute h-3 w-3 top-0 left-0 -translate-x-full translate-y-full -ml-2">
+                            <span className="flex absolute h-3 w-3 top-0 left-0 -translate-x-full translate-y-full -ml-2 justify-center items-center">
                                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
                                 <span className="relative inline-flex rounded-full h-3 w-3 bg-white"></span>
                             </span>
-                            <span className="relative inline-flex">SEOUL</span>
+                            <span className="relative inline-flex text-xl sm:text-2xl">SEOUL</span>
                         </div>
                 
                         <span id="currentTime" className="hidden sm:flex"></span>
         
                     </section>
-                    <a href="#!" className="underline text-2xl">TOP</a>
+                    <a href="#!" className="underline text-xl sm:text-2xl">TOP</a>
                 </article>
         </div>
     </> );

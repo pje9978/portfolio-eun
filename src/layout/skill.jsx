@@ -14,7 +14,7 @@ function Skill() {
           <div className="md:flex-row w-full md:mx-auto flex flex-col flex-wrap relative gap-8 items-start justify-items-start">
             <div className="w-full flex flex-col shrink-0 h-full justify-center items-center">
               <span className="text-xs tracking-widest">Skill</span>
-              <h1 className="text-center text-3xl text-textwhite font-semibold mt-2">
+              <h1 className="text-center text-2xl sm: text-3xl text-textwhite font-semibold mt-2">
                 My focused technologies:
                 <br />
                 <span className="text-textwhite opacity-50">current areas of proficiency</span>

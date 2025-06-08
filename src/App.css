@@ -30,6 +30,8 @@
     color:var(--text-white);
     font-family: "Pretendard-Regular";
     position: relative;
+    font-family: 'Pretendard', ui-sans-serif, system-ui;
+
   }
 
   .image-container {
